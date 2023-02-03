@@ -110,7 +110,10 @@ function newText(X,Y,text) {
 	var l=0;
 	var arr=[];
 	for(var i=0;i<text.length;i++) {
+		var cc=text.charCodeAt(i);
+		alert(cc);
 		var betty=newObject(X+i*15,Y+l*20,6,5,"text.png");
+		betty.frame=cc;
 	}
 	return arr;
 }
@@ -118,7 +121,7 @@ function newText(X,Y,text) {
 
 newObject(0,0,1,1,"background.png");
 var btn1=newButton(5,5,1,2,"button.png");
-var text1=newText(5,5,"start game");
+var text1=newText(5,5,"astart game");
 
 const interval = setInterval(function() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
