@@ -185,8 +185,8 @@ function normalMenu() {
 		pianoMenu();
 		nextLevel();
 	}
-	hearing_level=localStorage.getItem("level");
-	level_num=localStorage.getItem("level_num");
+	hearing_level=window.localStorage.getItem("level");
+	level_num=window.localStorage.getItem("level_num");
 	if(hearing_level==undefined||hearing_level=="") {
 		hearing_level="unassigned";
 		level_num="unassigned";
@@ -203,12 +203,8 @@ error_text.kill=function(){};
 var is_playing=false;
 var notes=[];
 var key_ids=[];
-var hearing_level=localStorage.getItem("level");
-var level_num=localStorage.getItem("level_num");
-if(hearing_level==undefined||hearing_level=="") {
-	hearing_level="unassigned";
-	level_num="unassigned";
-}
+var hearing_level="";
+var level_num="";
 var hearing_levels=["enaudi","normal person","pop composer","a child who plays piano","musical progidy but 2 yrs old","an adult who plays piano","professional piano player","composer","beethoven - but not deaf"];
 
 function pianoMenu() {
@@ -282,11 +278,11 @@ function pianoMenu() {
 				}
 			}
 			if(good==true) {
-				if(mistaken==false) {
+				if(mistaken==false||level_nummy==0) {
+					window.localStorage.setItem("level_num",level_nummy);
+					var lolzhaha=(hearing_levels[Math.max(0,Math.min(Math.floor((level_nummy-3)/2),hearing_levels.length-1))]);
+					window.localStorage.setItem("level",lolzhaha);
 					level_nummy++;
-					localStorage.setItem("level_num",level_nummy);
-					lolzhaha=(hearing_levels[Math.max(0,Math.min(Math.floor((level_nummy-3)/2),hearing_levels.length-1))]);
-					localStorage.setItem("level",lolzhaha);
 				}
 				the_sound.pause();
 				the_sound.currentTime=0;
