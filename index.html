@@ -126,10 +126,21 @@ function newText(X,Y,text) {
 	return arr;
 }
 
+function clearMenu() {
+	objects=[];
+	newObject(0,0,1,1,"background.png");
+}
 
-newObject(0,0,1,1,"background.png");
-var btn1=newButton(5,5,1,2,"button.png");
-var text1=newText(8,8,"start game");
+function normalMenu() {
+	clearMenu();
+	var btn1=newButton(5,5,1,2,"button.png");
+	var text1=newText(8,8,"start game");
+}
+
+
+normalMenu();
+
+
 
 const interval = setInterval(function() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
